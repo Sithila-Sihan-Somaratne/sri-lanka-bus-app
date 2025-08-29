@@ -136,7 +136,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
-              <img src="src/assets/Bus logo.png" alt="Bus Logo" className='logo'/>
+              <img src="src/assets/New bus logo.png" alt="Bus Logo" className='logo'/>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">Sri Lanka Bus Routes</h1>
                 <p className="text-sm text-gray-500">Find your journey across Sri Lanka</p>
