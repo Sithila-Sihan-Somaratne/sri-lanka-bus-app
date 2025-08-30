@@ -1,5 +1,5 @@
 # Node Modules
-/node_modules
+frontend/node_modules
 
 # Visual Studio Code
 .vscode/*
