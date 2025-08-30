@@ -6,46 +6,46 @@ export const busRoutes = [
     origin: "Pettah",
     destination: "Homagama",
     fare: 50,
-    duration: 90, // minutes (estimated)
-    frequency: 10, // minutes between buses (estimated)
+    duration: 90,
+    frequency: 10,
     type: "regular",
     stops: [
-      { id: "p1", name: "Pettah", lat: 6.9344, lng: 79.8428, order: 1 },
-      { id: "f1", name: "Fort", lat: 6.9344, lng: 79.8428, order: 2 },
-      { id: "lh1", name: "Lake House", lat: 6.9300, lng: 79.8460, order: 3 },
-      { id: "si1", name: "Slave Island", lat: 6.9250, lng: 79.8500, order: 4 },
-      { id: "ib1", name: "Ibbanwala Junction", lat: 6.9180, lng: 79.8550, order: 5 },
-      { id: "th1", name: "Town Hall", lat: 6.9147, lng: 79.8656, order: 6 },
-      { id: "tm1", name: "Thummulla", lat: 6.9050, lng: 79.8650, order: 7 },
-      { id: "tj1", name: "Thimbirigasyaya Junction", lat: 6.9000, lng: 79.8700, order: 8 },
-      { id: "hc1", name: "Havelock City – The Om Space", lat: 6.8850, lng: 79.8750, order: 9 },
-      { id: "kp1", name: "Kirillapone", lat: 6.8900, lng: 79.8800, order: 10 },
-      { id: "ng1", name: "Nugegoda", lat: 6.8800, lng: 79.9000, order: 11 },
-      { id: "dl1", name: "Delkanda", lat: 6.8700, lng: 79.9200, order: 12 },
-      { id: "nv1", name: "Navinna", lat: 6.8650, lng: 79.9300, order: 13 },
-      { id: "mh1", name: "Maharagama", lat: 6.8500, lng: 79.9600, order: 14 },
-      { id: "pp1", name: "Pannipitiya", lat: 6.8500, lng: 79.9800, order: 15 },
-      { id: "kt1", name: "Kottawa", lat: 6.8400, lng: 80.0000, order: 16 },
-      { id: "hm1", name: "Homagama", lat: 6.8600, lng: 79.9400, order: 17 }
+        { id: "p1", name: "Pettah", lat: 6.9340, lng: 79.8502, order: 1 },
+        { id: "f1", name: "Fort", lat: 6.9364, lng: 79.8465, order: 2 },
+        { id: "lh1", name: "Lake House", lat: 6.9323, lng: 79.8473, order: 3 },
+        { id: "si1", name: "Slave Island", lat: 6.9257, lng: 79.8503, order: 4 },
+        { id: "ib1", name: "Ibbanwala Junction", lat: 6.9181, lng: 79.8625, order: 5 },
+        { id: "th1", name: "Town Hall", lat: 6.9168, lng: 79.8631, order: 6 },
+        { id: "tm1", name: "Thummulla", lat: 6.8957, lng: 79.8605, order: 7 },
+        { id: "tj1", name: "Thimbirigasyaya Junction", lat: 6.9211, lng: 79.8698, order: 8 },
+        { id: "hc1", name: "Havelock City", lat: 6.8829, lng: 79.8688, order: 9 },
+        { id: "kp1", name: "Kirulapone", lat: 6.8786, lng: 79.8755, order: 10 },
+        { id: "ng1", name: "Nugegoda", lat: 6.8717, lng: 79.8898, order: 11 },
+        { id: "dl1", name: "Delkanda", lat: 6.8600, lng: 79.9000, order: 12 },
+        { id: "nv1", name: "Navinna", lat: 6.8525, lng: 79.9169, order: 13 },
+        { id: "mh1", name: "Maharagama", lat: 6.8482, lng: 79.9254, order: 14 },
+        { id: "pp1", name: "Pannipitiya", lat: 6.8454, lng: 79.9434, order: 15 },
+        { id: "kt1", name: "Kottawa", lat: 6.8408, lng: 79.9639, order: 16 },
+        { id: "hm1", name: "Homagama", lat: 6.8420, lng: 80.0033, order: 17 }
     ],
     coordinates: [
-      [6.9344, 79.8428], // Pettah
-      [6.9344, 79.8428], // Fort
-      [6.9300, 79.8460], // Lake House
-      [6.9250, 79.8500], // Slave Island
-      [6.9180, 79.8550], // Ibbanwala Junction
-      [6.9147, 79.8656], // Town Hall
-      [6.9050, 79.8650], // Thummulla
-      [6.9000, 79.8700], // Thimbirigasyaya Junction
-      [6.8850, 79.8750], // Havelock City – The Om Space
-      [6.8900, 79.8800], // Kirillapone
-      [6.8800, 79.9000], // Nugegoda
-      [6.8700, 79.9200], // Delkanda
-      [6.8650, 79.9300], // Navinna
-      [6.8500, 79.9600], // Maharagama
-      [6.8500, 79.9800], // Pannipitiya
-      [6.8400, 80.0000], // Kottawa
-      [6.8600, 79.9400]  // Homagama
+        [6.9340, 79.8502],
+        [6.9364, 79.8465],
+        [6.9323, 79.8473],
+        [6.9257, 79.8503],
+        [6.9181, 79.8625],
+        [6.9168, 79.8631],
+        [6.8957, 79.8605],
+        [6.9211, 79.8698],
+        [6.8829, 79.8688],
+        [6.8786, 79.8755],
+        [6.8717, 79.8898],
+        [6.8600, 79.9000],
+        [6.8525, 79.9169],
+        [6.8482, 79.9254],
+        [6.8454, 79.9434],
+        [6.8408, 79.9639],
+        [6.8420, 80.0033]
     ]
   },
   {
@@ -58,7 +58,7 @@ export const busRoutes = [
     frequency: 20,
     type: "regular",
     stops: [
-      { id: "th1", name: "Town Hall", lat: 6.9147, lng: 79.8656, order: 1 },
+      { id: "th1", name: "Town Hall", lat: 6.9168, lng: 79.8631, order: 1 },
       { id: "th2", name: "Borella", lat: 6.9200, lng: 79.8700, order: 2 },
       { id: "th3", name: "Rajagiriya", lat: 6.9100, lng: 79.8900, order: 3 },
       { id: "th4", name: "Battaramulla", lat: 6.8950, lng: 79.9200, order: 4 },
@@ -66,7 +66,7 @@ export const busRoutes = [
       { id: "th6", name: "Kadawatha", lat: 7.0167, lng: 79.9500, order: 6 }
     ],
     coordinates: [
-      [6.9147, 79.8656], // Town Hall
+      [6.9168, 79.8631], // Town Hall
       [6.9160, 79.8670],
       [6.9180, 79.8685],
       [6.9200, 79.8700], // Borella

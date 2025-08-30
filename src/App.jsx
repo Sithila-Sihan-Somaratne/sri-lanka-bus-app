@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Bus, MapPin, Clock, Navigation, Zap } from 'lucide-react';
+import { Bus, MapPin, Clock, Navigation, Zap, Route, Users, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SearchBox from './components/SearchBox';
 import RouteCard from './components/RouteCard';
 import MapView from './components/MapView';
-import BusArrivalStatus from './components/BusArrivalStatus';
+import EnhancedBusArrivalStatus from './components/EnhancedBusArrivalStatus';
 import NearbyStops from './components/NearbyStops';
+import IntermediateRouteSearch from './components/IntermediateRouteSearch';
+import MultiRouteJourney from './components/MultiRouteJourney.jsx';
+import LoginModal from './components/LoginModal';
+import UserProfile from './components/UserProfile';
 import { busRoutes, findRoutes, getReverseRoute } from './data/routes';
 import { useGeolocation } from './hooks/useGeolocation';
 import './App.css';
@@ -17,10 +21,26 @@ function App() {
   const [selectedRoute, setSelectedRoute] = useState(null);
   const [liveBuses, setLiveBuses] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
-  const [activeTab, setActiveTab] = useState('routes'); // 'routes', 'eta', 'nearby'
+  const [activeTab, setActiveTab] = useState('routes'); // 'routes', 'eta', 'nearby', 'intermediate', 'transfers'
+  const [user, setUser] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showFavorites, setShowFavorites] = useState(false);
   
   const { location, error: locationError, loading: locationLoading, refreshLocation } = useGeolocation();
   const userLocation = location ? [location.latitude, location.longitude] : null;
+
+  // Check for existing user session on app load
+  useEffect(() => {
+    const savedUser = localStorage.getItem('busAppUser');
+    if (savedUser) {
+      try {
+        setUser(JSON.parse(savedUser));
+      } catch (error) {
+        console.error('Error parsing saved user data:', error);
+        localStorage.removeItem('busAppUser');
+      }
+    }
+  }, []);
 
   // Simulate live bus data
   useEffect(() => {
@@ -82,6 +102,20 @@ function App() {
     const temp = origin;
     setOrigin(destination);
     setDestination(temp);
+  };
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setShowFavorites(false);
+  };
+
+  const handleShowFavorites = () => {
+    setShowFavorites(true);
+    setActiveTab('routes');
   };
 
   const handleSelectRoute = (route) => {
@@ -160,6 +194,23 @@ function App() {
                   Enable Location
                 </Button>
               )}
+              
+              {user ? (
+                <UserProfile 
+                  user={user} 
+                  onLogout={handleLogout}
+                  onShowFavorites={handleShowFavorites}
+                />
+              ) : (
+                <Button
+                  onClick={() => setShowLoginModal(true)}
+                  className="bg-blue-600 hover:bg-blue-700"
+                  size="sm"
+                >
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Sign In
+                </Button>
+              )}
             </div>
           </div>
         </div>
@@ -185,37 +236,59 @@ function App() {
               <div className="flex border-b border-gray-200">
                 <button
                   onClick={() => setActiveTab('routes')}
-                  className={`flex-1 px-4 py-3 text-sm font-medium ${
+                  className={`flex-1 px-2 py-3 text-xs font-medium ${
                     activeTab === 'routes'
                       ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50'
                       : 'text-gray-600 hover:text-gray-800'
                   }`}
                 >
-                  <Bus className="h-4 w-4 inline mr-2" />
+                  <Bus className="h-4 w-4 inline mr-1" />
                   Routes
                 </button>
                 <button
+                  onClick={() => setActiveTab('intermediate')}
+                  className={`flex-1 px-2 py-3 text-xs font-medium ${
+                    activeTab === 'intermediate'
+                      ? 'text-purple-600 border-b-2 border-purple-600 bg-purple-50'
+                      : 'text-gray-600 hover:text-gray-800'
+                  }`}
+                >
+                  <Route className="h-4 w-4 inline mr-1" />
+                  Any Stop
+                </button>
+                <button
+                  onClick={() => setActiveTab('transfers')}
+                  className={`flex-1 px-2 py-3 text-xs font-medium ${
+                    activeTab === 'transfers'
+                      ? 'text-orange-600 border-b-2 border-orange-600 bg-orange-50'
+                      : 'text-gray-600 hover:text-gray-800'
+                  }`}
+                >
+                  <Users className="h-4 w-4 inline mr-1" />
+                  Transfers
+                </button>
+                <button
                   onClick={() => setActiveTab('eta')}
-                  className={`flex-1 px-4 py-3 text-sm font-medium ${
+                  className={`flex-1 px-2 py-3 text-xs font-medium ${
                     activeTab === 'eta'
                       ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50'
                       : 'text-gray-600 hover:text-gray-800'
                   }`}
                   disabled={!selectedRoute}
                 >
-                  <Clock className="h-4 w-4 inline mr-2" />
+                  <Clock className="h-4 w-4 inline mr-1" />
                   Live ETA
                 </button>
                 <button
                   onClick={() => setActiveTab('nearby')}
-                  className={`flex-1 px-4 py-3 text-sm font-medium ${
+                  className={`flex-1 px-2 py-3 text-xs font-medium ${
                     activeTab === 'nearby'
                       ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50'
                       : 'text-gray-600 hover:text-gray-800'
                   }`}
                   disabled={!userLocation}
                 >
-                  <MapPin className="h-4 w-4 inline mr-2" />
+                  <MapPin className="h-4 w-4 inline mr-1" />
                   Nearby
                 </button>
               </div>
@@ -304,9 +377,27 @@ function App() {
                   </div>
                 )}
 
+                {/* Intermediate Route Search Tab */}
+                {activeTab === 'intermediate' && (
+                  <div className="p-4">
+                    <IntermediateRouteSearch onRouteSelect={handleSelectRoute} />
+                  </div>
+                )}
+
+                {/* Transfers Tab */}
+                {activeTab === 'transfers' && (
+                  <div className="p-4">
+                    <MultiRouteJourney 
+                      origin={origin} 
+                      destination={destination} 
+                      onRouteSelect={handleSelectRoute} 
+                    />
+                  </div>
+                )}
+
                 {/* ETA Tab */}
                 {activeTab === 'eta' && (
-                  <BusArrivalStatus 
+                  <EnhancedBusArrivalStatus 
                     selectedRoute={selectedRoute}
                     userLocation={userLocation}
                   />
@@ -363,8 +454,16 @@ function App() {
           </div>
         </div>
       </div>
+      
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+        onLogin={handleLogin}
+      />
     </div>
   );
 }
 
 export default App;
+

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Polyline, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import MapLegend from './MapLegend'; // Import the MapLegend component
 
 // Fix for default markers in react-leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -147,7 +148,7 @@ const MapView = ({ selectedRoute, buses = [], userLocation, className = "" }) =>
                   ETA: <span className="font-medium text-blue-600">{bus.eta} min</span>
                 </div>
                 <div className={`text-xs font-medium ${
-                  bus.status === 'on-time' ? 'text-green-600' : 
+                                   bus.status === 'on-time' ? 'text-green-600' : 
                   bus.status === 'delayed' ? 'text-red-600' : 'text-yellow-600'
                 }`}>
                   {bus.status.replace('-', ' ').toUpperCase()}
@@ -173,36 +174,9 @@ const MapView = ({ selectedRoute, buses = [], userLocation, className = "" }) =>
       </MapContainer>
       
       {/* Map Legend */}
-      <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg p-3 text-xs">
-        <div className="font-semibold mb-2">Legend</div>
-        <div className="space-y-1">
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-            <span>Origin</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-red-500 rounded-full"></div>
-            <span>Destination</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-gray-500 rounded-full"></div>
-            <span>Bus Stop</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-            <span>Live Bus</span>
-          </div>
-          {userLocation && (
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-purple-500 rounded-full"></div>
-              <span>Your Location</span>
-            </div>
-          )}
-        </div>
-      </div>
+      <MapLegend userLocation={userLocation} />
     </div>
   );
 };
 
 export default MapView;
-

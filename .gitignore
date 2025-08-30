@@ -8,3 +8,6 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+
+# Environment Variables
+.env
