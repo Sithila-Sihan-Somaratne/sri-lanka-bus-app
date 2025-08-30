@@ -389,7 +389,7 @@ function App() {
                           Popular Routes
                         </h3>
                         <div className="space-y-3">
-                          {busRoutes.slice(0, 3).map((route) => (
+                          {busRoutes.slice(0, 4).map((route) => (
                             <div
                               key={route.id}
                               className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100"

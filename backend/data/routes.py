@@ -1,17 +1,41 @@
 '''Sample bus route data for Sri Lanka'''
 busRoutes = [
   {
+    "id": "01",
+    "name": "Fort - Kandy",
+    "origin": "Fort",
+    "destination": "Kandy",
+    "fare": 100,
+    "duration": 200,
+    "frequency": 35,
+    "type": "regular",
+    "stops": [
+        { "id": "f1", "name": "Fort", "lat": 6.9373, "lng": 79.8471, "order": 1 },
+        { "id": "pl1", "name": "Peliyagoda", "lat": 6.9355, "lng": 79.8848, "order": 2 },
+        { "id": "ne1", "name": "Neludeniya", "lat": 7.2349, "lng": 80.2632, "order": 3 },
+        { "id": "ke1", "name": "Kegalle", "lat": 7.2533, "lng": 80.3448, "order": 4 },
+        { "id": "ka1", "name": "Kandy", "lat": 7.2931, "lng": 80.6343, "order": 5 }
+    ],
+    "coordinates": [
+        {6.9373, 79.8471},
+        {6.9355, 79.8848},
+        {7.2349, 80.2632},
+        {7.2533, 80.3448},
+        {7.2931, 80.6343}
+    ]
+  },
+  {
     "id": "138",
     "name": "Pettah - Homagama",
     "origin": "Pettah",
     "destination": "Homagama",
     "fare": 50,
     "duration": 90,
-    "frequency": 10,
+    "frequency": 35,
     "type": "regular",
     "stops": [
         { "id": "p1", "name": "Pettah", "lat": 6.9340, "lng": 79.8502, "order": 1 },
-        { "id": "f1", "name": "Fort", "lat": 6.9364, "lng": 79.8465, "order": 2 },
+        { "id": "f1", "name": "Fort", "lat": 6.9373, "lng": 79.8471, "order": 2 },
         { "id": "lh1", "name": "Lake House", "lat": 6.9323, "lng": 79.8473, "order": 3 },
         { "id": "si1", "name": "Slave Island", "lat": 6.9257, "lng": 79.8503, "order": 4 },
         { "id": "ib1", "name": "Ibbanwala Junction", "lat": 6.9181, "lng": 79.8625, "order": 5 },
@@ -30,7 +54,7 @@ busRoutes = [
     ],
     "coordinates": [
         [6.9340, 79.8502],
-        [6.9364, 79.8465],
+        [6.9373, 79.8471],
         [6.9323, 79.8473],
         [6.9257, 79.8503],
         [6.9181, 79.8625],
@@ -55,7 +79,7 @@ busRoutes = [
     "destination": "Kadawatha",
     "fare": 30,
     "duration": 45,
-    "frequency": 20,
+    "frequency": 35,
     "type": "regular",
     "stops": [
       { "id": "th1", "name": "Town Hall", "lat": 6.9168, "lng": 79.8631, "order": 1 },
@@ -100,7 +124,7 @@ busRoutes = [
     "destination": "Matara",
     "fare": 150,
     "duration": 180,
-    "frequency": 30,
+    "frequency": 35,
     "type": "express",
     "stops": [
       { "id": "ex1", "name": "Makumbara", "lat": 6.9344, "lng": 79.8428, "order": 1 },
@@ -132,8 +156,8 @@ busRoutes = [
 
 cities = [
   { "name": "Colombo", "lat": 6.9271, "lng": 79.8612 },
-  { "name": "Fort", "lat": 6.9344, "lng": 79.8428 },
-  { "name": "Pettah", "lat": 6.9344, "lng": 79.8428 },
+  { "name": "Fort", "lat": 6.9373, "lng": 79.8471 },
+  { "name": "Pettah", "lat": 6.9340, "lng": 79.8502 },
   { "name": "Kadawatha", "lat": 7.0167, "lng": 79.9500 },
   { "name": "Town Hall", "lat": 6.9147, "lng": 79.8656 },
   { "name": "Kandy", "lat": 7.2906, "lng": 80.6337 },

@@ -1,13 +1,37 @@
 // Sample bus route data for Sri Lanka
 export const busRoutes = [
   {
+    id: "01",
+    name: "Fort - Kandy",
+    origin: "Fort",
+    destination: "Kandy",
+    fare: 100,
+    duration: 200,
+    frequency: 35,
+    type: "regular",
+    stops: [
+        { "id": "f1", "name": "Fort", "lat": 6.9373, "lng": 79.8471, "order": 1 },
+        { "id": "pl1", "name": "Peliyagoda", "lat": 6.9355, "lng": 79.8848, "order": 2 },
+        { "id": "ne1", "name": "Neludeniya", "lat": 7.2349, "lng": 80.2632, "order": 3 },
+        { "id": "ke1", "name": "Kegalle", "lat": 7.2533, "lng": 80.3448, "order": 4 },
+        { "id": "ka1", "name": "Kandy", "lat": 7.2931, "lng": 80.6343, "order": 5 }
+    ],
+    coordinates: [
+        [6.9373, 79.8471], // Fort
+        [6.9355, 79.8848], // Peliyagoda
+        [7.2349, 80.2632], // Neludeniya
+        [7.2533, 80.3448], // Kegalle
+        [7.2931, 80.6343] // Kandy
+    ]
+  },
+  {
     id: "138",
     name: "Pettah - Homagama",
     origin: "Pettah",
     destination: "Homagama",
     fare: 50,
     duration: 90,
-    frequency: 10,
+    frequency: 35,
     type: "regular",
     stops: [
         { id: "p1", name: "Pettah", lat: 6.9340, lng: 79.8502, order: 1 },
@@ -55,7 +79,7 @@ export const busRoutes = [
     destination: "Kadawatha",
     fare: 30,
     duration: 45,
-    frequency: 20,
+    frequency: 35,
     type: "regular",
     stops: [
       { id: "th1", name: "Town Hall", lat: 6.9168, lng: 79.8631, order: 1 },
@@ -100,7 +124,7 @@ export const busRoutes = [
     destination: "Matara",
     fare: 150,
     duration: 180,
-    frequency: 30,
+    frequency: 35,
     type: "express",
     stops: [
       { id: "ex1", name: "Makumbara", lat: 6.9344, lng: 79.8428, order: 1 },
@@ -132,11 +156,11 @@ export const busRoutes = [
 
 export const cities = [
   { name: "Colombo", lat: 6.9271, lng: 79.8612 },
-  { name: "Fort", lat: 6.9344, lng: 79.8428 },
-  { name: "Pettah", lat: 6.9344, lng: 79.8428 },
+  { name: "Fort", lat: 6.9373, lng: 79.8471 },
+  { name: "Pettah", lat: 6.9340, lng: 79.8502 },
   { name: "Kadawatha", lat: 7.0167, lng: 79.9500 },
   { name: "Town Hall", lat: 6.9147, lng: 79.8656 },
-  { name: "Kandy", lat: 7.2906, lng: 80.6337 },
+  { name: "Kandy", lat: 7.2931, lng: 80.6343 },
   { name: "Galle", lat: 6.0535, lng: 80.2210 },
   { name: "Matara", lat: 5.9549, lng: 80.5550 },
   { name: "Negombo", lat: 7.2083, lng: 79.8358 },
