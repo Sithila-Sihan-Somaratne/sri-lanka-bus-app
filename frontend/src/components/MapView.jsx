@@ -72,12 +72,8 @@ const RoutingMachine = ({ selectedRoute }) => {
             return;
         }
 
-        // --- MORE ROBUST FIX ---
         // We will explicitly map the coordinates to ensure they are always in the correct order (lat,lng)
         const waypoints = selectedRoute.stops.map(stop => {
-            // Check the values and swap them if they appear to be in the wrong order
-            // A simple heuristic: if lng is outside typical lat range, it's likely a swap is needed.
-            // This is a defensive approach. The safest fix is to ensure data source is correct.
             const lat = Math.abs(stop.lat) <= 90 ? stop.lat : stop.lng;
             const lng = Math.abs(stop.lat) <= 90 ? stop.lng : stop.lat;
             return `${lat},${lng}`;
@@ -85,7 +81,6 @@ const RoutingMachine = ({ selectedRoute }) => {
 
         const fetchRoute = async () => {
             try {
-                // REMOVED `&ch.disable=true` as it requires a paid plan
                 const response = await fetch(`https://graphhopper.com/api/1/route?point=${waypoints.join('&point=')}&vehicle=car&key=${graphHopperApiKey}&instructions=false`);
                 
                 if (!response.ok) {
@@ -100,11 +95,9 @@ const RoutingMachine = ({ selectedRoute }) => {
                     const encodedPolyline = data.paths[0].points;
                     const coordinates = decodePolyline(encodedPolyline);
                     
-                    // Create and add the polyline to the map
                     const newPolyline = L.polyline(coordinates, { color: '#3b82f6', weight: 6, opacity: 0.8 }).addTo(map);
                     polylineRef.current = newPolyline;
                     
-                    // Fit the map to the route bounds
                     map.fitBounds(newPolyline.getBounds());
                 } else {
                     console.error('No route found.');
@@ -116,7 +109,6 @@ const RoutingMachine = ({ selectedRoute }) => {
 
         fetchRoute();
         
-        // Cleanup function to remove the polyline when the component unmounts
         return () => {
             if (polylineRef.current) {
                 map.removeLayer(polylineRef.current);
@@ -148,32 +140,22 @@ const MapView = ({ selectedRoute, buses = [], userLocation, className = "" }) =>
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 
-                {/* The RoutingMachine component only draws the route line */}
                 {selectedRoute !== null && <RoutingMachine selectedRoute={selectedRoute} />}
 
                 {/* Markers for the route stops are now rendered here declaratively */}
                 {selectedRoute && selectedRoute.stops.map((stop, index) => {
                     let icon;
-                    let className = "text-gray-600";
+                    let popupContent;
                     if (index === 0) {
                         icon = originIcon;
-                        className = "text-green-600";
+                        popupContent = `<div class="font-semibold">Origin: ${stop.name}</div>`;
                     } else if (index === selectedRoute.stops.length - 1) {
                         icon = destinationIcon;
-                        className = "text-red-600";
+                        popupContent = `<div class="font-semibold">Destination: ${stop.name}</div>`;
                     } else {
                         icon = busStopIcon;
+                        popupContent = `<div class="font-semibold">Bus Stop: ${stop.name}</div>`;
                     }
-
-                    const popupContent = `
-                        <div class="text-center">
-                            <div class="font-semibold">${stop.name}</div>
-                            <div class="text-sm text-gray-600">Stop ${stop.order} of ${selectedRoute.stops.length}</div>
-                            <div class="text-xs ${className}">
-                                ${index === 0 ? "Origin" : index === selectedRoute.stops.length - 1 ? "Destination" : ""}
-                            </div>
-                        </div>
-                    `;
 
                     return (
                         <Marker key={stop.order} position={[stop.lat, stop.lng]} icon={icon}>
@@ -186,9 +168,7 @@ const MapView = ({ selectedRoute, buses = [], userLocation, className = "" }) =>
                 {buses.map((bus) => (
                     <Marker key={bus.id} position={bus.position} icon={busIcon}>
                         <Popup>
-                            <div className="text-center">
-                                <div className="font-semibold">Bus #{bus.id}</div>
-                            </div>
+                            <div className="font-semibold">Bus #{bus.id}</div>
                         </Popup>
                     </Marker>
                 ))}
@@ -196,9 +176,7 @@ const MapView = ({ selectedRoute, buses = [], userLocation, className = "" }) =>
                 {userLocation && (
                     <Marker position={userLocation} icon={userLocationIcon}>
                         <Popup>
-                            <div className="text-center">
-                                <div className="font-semibold">Your Location</div>
-                            </div>
+                            <div className="font-semibold">Your Location</div>
                         </Popup>
                     </Marker>
                 )}
