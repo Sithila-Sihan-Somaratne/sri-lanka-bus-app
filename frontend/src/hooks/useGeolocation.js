@@ -1,63 +1,49 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-export const useGeolocation = () => {
+export function useGeolocation() {
   const [location, setLocation] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  // Function to request location and set it
+  const getPosition = () => {
     if (!navigator.geolocation) {
-      setError('Geolocation is not supported by this browser.');
+      setError("Geolocation is not supported by your browser.");
       setLoading(false);
       return;
     }
 
-    const handleSuccess = (position) => {
+    setLoading(true);
+    setError(null);
+
+    const successHandler = (position) => {
       setLocation({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
-        accuracy: position.coords.accuracy,
       });
       setLoading(false);
     };
 
-    const handleError = (error) => {
-      setError(error.message);
+    const errorHandler = (err) => {
+      setError(err.message);
       setLoading(false);
     };
 
-    navigator.geolocation.getCurrentPosition(handleSuccess, handleError, {
+    navigator.geolocation.getCurrentPosition(successHandler, errorHandler, {
       enableHighAccuracy: true,
-      timeout: 10000,
-      maximumAge: 300000, // 5 minutes
+      timeout: 5000,
+      maximumAge: 0,
     });
+  };
+
+  useEffect(() => {
+    getPosition();
   }, []);
 
+  // Expose a function to allow the user to refresh the location manually
   const refreshLocation = () => {
-    setLoading(true);
-    setError(null);
-    
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setLocation({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          accuracy: position.coords.accuracy,
-        });
-        setLoading(false);
-      },
-      (error) => {
-        setError(error.message);
-        setLoading(false);
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 0, // Force fresh location
-      }
-    );
+    getPosition();
   };
 
   return { location, error, loading, refreshLocation };
-};
-
+}

@@ -1,5 +1,5 @@
 // API service for communicating with the backend
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://10.41.168.210:5000/api';
 
 class ApiService {
   constructor() {

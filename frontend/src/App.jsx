@@ -197,14 +197,6 @@ function App() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
               <img src="/New bus logo.png" alt="Bus Logo" className="logo" />
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">
-                  Sri Lanka Bus Routes
-                </h1>
-                <p className="text-sm text-gray-500">
-                  Find your journey across Sri Lanka
-                </p>
-              </div>
             </div>
             <div className="flex items-center space-x-4">
               {userLocation && (
@@ -247,6 +239,15 @@ function App() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="text-center mb-8">
+          <h1 className="text-xl font-bold text-black-900 uppercase italic">
+            It's time to make your bus journey easier!
+          </h1>
+          <h2 className="text-lg text-black font-semibold mb-6">
+            Effortless public transport, with real-time tracking at your fingertips.
+          </h2>
+        </div>
+        
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Panel - Search and Results */}
           <div className="lg:col-span-1 space-y-6">
@@ -389,7 +390,7 @@ function App() {
                           Popular Routes
                         </h3>
                         <div className="space-y-3">
-                          {busRoutes.slice(0, 4).map((route) => (
+                          {busRoutes.slice(0, 5).map((route) => (
                             <div
                               key={route.id}
                               className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100"
@@ -409,7 +410,7 @@ function App() {
                               </div>
                               <div className="text-right">
                                 <div className="text-sm font-medium text-green-600">
-                                  Rs. {route.fare}
+                                   <b>රු</b>. {route.fare}
                                 </div>
                                 <div className="text-xs text-gray-500">
                                   {Math.floor(route.duration / 60)}h{" "}

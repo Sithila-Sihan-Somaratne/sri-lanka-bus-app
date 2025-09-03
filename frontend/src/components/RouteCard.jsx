@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, DollarSign, MapPin, ArrowRight, Bus, Zap } from 'lucide-react';
+import { Clock, MapPin, ArrowRight, Bus, Zap, Crown, Sparkle, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const RouteCard = ({ route, onSelectRoute, onShowOnMap }) => {
@@ -16,6 +16,10 @@ const RouteCard = ({ route, onSelectRoute, onShowOnMap }) => {
     switch (type) {
       case 'express':
         return <Zap className="h-4 w-4 text-yellow-500" />;
+      case 'luxury':
+        return <Crown className="h-4 w-4 text-purple-500" />;
+      case 'semi-luxury':
+        return <Sparkle className="h-4 w-4 text-teal-500" />;
       default:
         return <Bus className="h-4 w-4 text-blue-500" />;
     }
@@ -25,6 +29,10 @@ const RouteCard = ({ route, onSelectRoute, onShowOnMap }) => {
     switch (type) {
       case 'express':
         return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'luxury':
+        return 'bg-purple-100 text-purple-800 border-purple-200';
+      case 'semi-luxury':
+        return 'bg-teal-100 text-teal-800 border-teal-200';
       default:
         return 'bg-blue-100 text-blue-800 border-blue-200';
     }
@@ -40,11 +48,14 @@ const RouteCard = ({ route, onSelectRoute, onShowOnMap }) => {
             <span className="text-xl font-bold text-gray-800">#{route.id}</span>
           </div>
           <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getRouteTypeColor(route.type)}`}>
-            {route.type === 'express' ? 'Express' : 'Regular'}
+            {route.type === 'express' ? 'Express' :
+            route.type === 'luxury' ? 'Luxury' :
+            route.type === 'semi-luxury' ? 'Semi Luxury' :
+            'Regular'}
           </span>
         </div>
         <div className="text-right">
-          <div className="text-lg font-semibold text-green-600">Rs. {route.fare}</div>
+          <div className="text-lg font-semibold text-green-600">රු. {route.fare}</div>
           <div className="text-xs text-gray-500">per person</div>
         </div>
       </div>
@@ -77,9 +88,9 @@ const RouteCard = ({ route, onSelectRoute, onShowOnMap }) => {
           <Bus className="h-4 w-4 text-gray-500" />
           <div>
             <div className="text-sm font-medium text-gray-800">
-              Every {route.frequency}m
+              Every {route.frequency} 
             </div>
-            <div className="text-xs text-gray-500">Frequency</div>
+            <div className="text-xs text-gray-500">Speed</div>
           </div>
         </div>
       </div>
@@ -90,7 +101,7 @@ const RouteCard = ({ route, onSelectRoute, onShowOnMap }) => {
           Route ({route.stops.length} stops)
         </div>
         <div className="flex flex-wrap gap-1">
-          {route.stops.slice(0, 4).map((stop, index) => (
+          {route.stops.slice(0, route.stops.length).map((stop, index) => (
             <span
               key={stop.id}
               className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded"
@@ -98,11 +109,6 @@ const RouteCard = ({ route, onSelectRoute, onShowOnMap }) => {
               {stop.name}
             </span>
           ))}
-          {route.stops.length > 4 && (
-            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-              +{route.stops.length - 4} more
-            </span>
-          )}
         </div>
       </div>
 

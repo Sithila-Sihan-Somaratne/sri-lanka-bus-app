@@ -2,22 +2,22 @@
 export const busRoutes = [
   {
     id: "01",
-    name: "Fort - Kandy",
-    origin: "Fort",
+    name: "Colombo Fort - Kandy",
+    origin: "Colombo Fort",
     destination: "Kandy",
-    fare: 100,
-    duration: 200,
-    frequency: 35,
-    type: "regular",
+    fare: 740,
+    duration: 250,
+    frequency: 10,
+    type: "luxury",
     stops: [
-        { "id": "f1", "name": "Fort", "lat": 6.9373, "lng": 79.8471, "order": 1 },
-        { "id": "pl1", "name": "Peliyagoda", "lat": 6.9355, "lng": 79.8848, "order": 2 },
-        { "id": "ne1", "name": "Neludeniya", "lat": 7.2349, "lng": 80.2632, "order": 3 },
-        { "id": "ke1", "name": "Kegalle", "lat": 7.2533, "lng": 80.3448, "order": 4 },
-        { "id": "ka1", "name": "Kandy", "lat": 7.2931, "lng": 80.6343, "order": 5 }
+        { id: "f1", name: "Colombo Fort", lat: 6.9373, lng: 79.8471, order: 1 },
+        { id: "pl1", name: "Peliyagoda", lat: 6.9355, lng: 79.8848, order: 2 },
+        { id: "ne1", name: "Neludeniya", lat: 7.2349, lng: 80.2632, order: 3 },
+        { id: "ke1", name: "Kegalle", lat: 7.2533, lng: 80.3448, order: 4 },
+        { id: "ka1", name: "Kandy", lat: 7.2898, lng: 80.6311, order: 5 }
     ],
     coordinates: [
-        [6.9373, 79.8471], // Fort
+        [6.9373, 79.8471], // Colombo Fort
         [6.9355, 79.8848], // Peliyagoda
         [7.2349, 80.2632], // Neludeniya
         [7.2533, 80.3448], // Kegalle
@@ -25,21 +25,45 @@ export const busRoutes = [
     ]
   },
   {
-    id: "138",
-    name: "Pettah - Homagama",
-    origin: "Pettah",
-    destination: "Homagama",
-    fare: 50,
-    duration: 90,
-    frequency: 35,
-    type: "regular",
+    id: "87",
+    name: "Colombo Fort - Jaffna",
+    origin: "Colombo Fort",
+    destination: "Jaffna",
+    fare: 1719,
+    duration: 375,
+    frequency: 10,
+    type: "semi-luxury",
     stops: [
-        { id: "p1", name: "Pettah", lat: 6.9340, lng: 79.8502, order: 1 },
-        { id: "f1", name: "Fort", lat: 6.9364, lng: 79.8465, order: 2 },
+        { id: "f1", name: "Colombo Fort", lat: 6.9373, lng: 79.8471, order: 1 },
+        { id: "ch1", name: "Chilaw", lat: 7.5769, lng: 79.7961, order: 2 },
+        { id: "pu1", name: "Puttalam", lat: 8.0281, lng: 79.8333, order: 3 },
+        { id: "an1", name: "Anuradhapura", lat: 8.3231, lng: 80.4028, order: 4 },
+        { id: "ja1", name: "Jaffna", lat: 9.6668, lng: 80.0120, order: 5 }
+    ],
+    coordinates: [
+        [6.9373, 79.8471], // Colombo Fort
+        [7.5769, 79.7961], // Chilaw
+        [8.0342, 79.8296], // Puttalam
+        [8.3231, 80.4028], // Anuradhapura
+        [9.6668, 80.0120]  // Jaffna
+    ]
+  },
+  {
+    id: "138",
+    name: "Colombo Pettah - Homagama",
+    origin: "Colombo Pettah",
+    destination: "Homagama",
+    fare: 2200,
+    duration: 50,
+    frequency: 10,
+    type: "luxury",
+    stops: [
+        { id: "p1", name: "Colombo Pettah", lat: 6.9340, lng: 79.8502, order: 1 },
+        { id: "f1", name: "Colombo Fort", lat: 6.9364, lng: 79.8465, order: 2 },
         { id: "lh1", name: "Lake House", lat: 6.9323, lng: 79.8473, order: 3 },
         { id: "si1", name: "Slave Island", lat: 6.9257, lng: 79.8503, order: 4 },
         { id: "ib1", name: "Ibbanwala Junction", lat: 6.9181, lng: 79.8625, order: 5 },
-        { id: "th1", name: "Town Hall", lat: 6.9168, lng: 79.8631, order: 6 },
+        { id: "th1", name: "Colombo Town Hall", lat: 6.9168, lng: 79.8631, order: 6 },
         { id: "tm1", name: "Thummulla", lat: 6.8957, lng: 79.8605, order: 7 },
         { id: "tj1", name: "Thimbirigasyaya Junction", lat: 6.9211, lng: 79.8698, order: 8 },
         { id: "hc1", name: "Havelock City", lat: 6.8829, lng: 79.8688, order: 9 },
@@ -53,68 +77,49 @@ export const busRoutes = [
         { id: "hm1", name: "Homagama", lat: 6.8420, lng: 80.0033, order: 17 }
     ],
     coordinates: [
-        [6.9340, 79.8502],
-        [6.9364, 79.8465],
-        [6.9323, 79.8473],
-        [6.9257, 79.8503],
-        [6.9181, 79.8625],
-        [6.9168, 79.8631],
-        [6.8957, 79.8605],
-        [6.9211, 79.8698],
-        [6.8829, 79.8688],
-        [6.8786, 79.8755],
-        [6.8717, 79.8898],
-        [6.8600, 79.9000],
-        [6.8525, 79.9169],
-        [6.8482, 79.9254],
-        [6.8454, 79.9434],
-        [6.8408, 79.9639],
-        [6.8420, 80.0033]
+        [6.9340, 79.8502], // Colombo Pettah
+        [6.9364, 79.8465], // Colombo Fort
+        [6.9323, 79.8473], // Lake House
+        [6.9257, 79.8503], // Slave Island
+        [6.9181, 79.8625], // Ibbanwala Junction
+        [6.9168, 79.8631], // Colombo Town Hall
+        [6.8957, 79.8605], // Thummulla
+        [6.9211, 79.8698], // Thimbirigasyaya Junction
+        [6.8829, 79.8688], // Havelock City
+        [6.8786, 79.8755], // Kirulapone
+        [6.8717, 79.8898], // Nugegoda
+        [6.8600, 79.9000], // Delkanda
+        [6.8525, 79.9169], // Navinna
+        [6.8482, 79.9254], // Maharagama
+        [6.8454, 79.9434], // Pannipitiya
+        [6.8408, 79.9639], // Kottawa
+        [6.8420, 80.0033]  // Homagama
     ]
   },
   {
     id: "193",
-    name: "Town Hall - Kadawatha",
-    origin: "Town Hall",
+    name: "Colombo Town Hall - Kadawatha",
+    origin: "Colombo Town Hall",
     destination: "Kadawatha",
-    fare: 30,
-    duration: 45,
-    frequency: 35,
+    fare: 2300,
+    duration: 35,
+    frequency: 10,
     type: "regular",
     stops: [
-      { id: "th1", name: "Town Hall", lat: 6.9168, lng: 79.8631, order: 1 },
-      { id: "th2", name: "Borella", lat: 6.9200, lng: 79.8700, order: 2 },
-      { id: "th3", name: "Rajagiriya", lat: 6.9100, lng: 79.8900, order: 3 },
-      { id: "th4", name: "Battaramulla", lat: 6.8950, lng: 79.9200, order: 4 },
-      { id: "th5", name: "Kaduwela", lat: 6.9333, lng: 79.9833, order: 5 },
-      { id: "th6", name: "Kadawatha", lat: 7.0167, lng: 79.9500, order: 6 }
+      { id: "th1", name: "Colombo Town Hall", lat: 6.9168, lng: 79.8631, order: 1 },
+      { id: "th2", name: "Borella", lat: 6.9150, lng: 79.8780, order: 2 },
+      { id: "th3", name: "Rajagiriya", lat: 6.9101, lng: 79.8944, order: 3 },
+      { id: "th4", name: "Battaramulla", lat: 6.9020, lng: 79.9174, order: 4 },
+      { id: "th5", name: "Kaduwela", lat: 6.9363, lng: 79.9833, order: 5 },
+      { id: "th6", name: "Kadawatha", lat: 7.0052, lng: 79.9546, order: 6 }
     ],
     coordinates: [
-      [6.9168, 79.8631], // Town Hall
-      [6.9160, 79.8670],
-      [6.9180, 79.8685],
-      [6.9200, 79.8700], // Borella
-      [6.9180, 79.8750],
-      [6.9160, 79.8800],
-      [6.9140, 79.8850],
-      [6.9120, 79.8880],
-      [6.9100, 79.8900], // Rajagiriya
-      [6.9080, 79.9000],
-      [6.9050, 79.9100],
-      [6.9000, 79.9150],
-      [6.8950, 79.9200], // Battaramulla
-      [6.9000, 79.9300],
-      [6.9100, 79.9500],
-      [6.9200, 79.9650],
-      [6.9250, 79.9700],
-      [6.9300, 79.9750],
-      [6.9333, 79.9833], // Kaduwela
-      [6.9500, 79.9700],
-      [6.9700, 79.9600],
-      [6.9900, 79.9550],
-      [7.0000, 79.9520],
-      [7.0100, 79.9510],
-      [7.0167, 79.9500]  // Kadawatha
+      [6.9168, 79.8631], // Colombo Town Hall
+      [6.9150, 79.8780], // Borella
+      [6.9101, 79.8944], // Rajagiriya
+      [6.9020, 79.9174], // Battaramulla
+      [6.9363, 79.9833], // Kaduwela
+      [7.0052, 79.9546]  // Kadawatha
     ]
   },
   {
@@ -122,54 +127,66 @@ export const busRoutes = [
     name: "Makumbara - Matara (Express)",
     origin: "Makumbara",
     destination: "Matara",
-    fare: 150,
-    duration: 180,
-    frequency: 35,
+    fare: 970,
+    duration: 105,
+    frequency: 10,
     type: "express",
     stops: [
-      { id: "ex1", name: "Makumbara", lat: 6.9344, lng: 79.8428, order: 1 },
-      { id: "ex2", name: "Kalutara", lat: 6.5854, lng: 79.9607, order: 2 },
-      { id: "ex3", name: "Aluthgama", lat: 6.4281, lng: 80.0037, order: 3 },
-      { id: "ex4", name: "Galle", lat: 6.0535, lng: 80.2210, order: 4 },
-      { id: "ex5", name: "Matara", lat: 5.9549, lng: 80.5550, order: 5 }
+      { id: "ex1", name: "Makumbara", lat: 6.8730, lng: 79.9390, order: 1 },
+      { id: "ex2", name: "Kalutara", lat: 6.5844, lng: 79.9604, order: 2 },
+      { id: "ex3", name: "Aluthgama", lat: 6.4320, lng: 79.9984, order: 3 },
+      { id: "ex4", name: "Galle", lat: 6.0329, lng: 80.2158, order: 4 },
+      { id: "ex5", name: "Matara", lat: 5.9431, lng: 80.5490, order: 5 }
     ],
     coordinates: [
-      [6.9344, 79.8428], // Makumbara (Colombo)
-      [6.8500, 79.8800],
-      [6.7500, 79.9200],
-      [6.6500, 79.9500],
-      [6.5854, 79.9607], // Kalutara
-      [6.5000, 79.9800],
-      [6.4500, 80.0000],
-      [6.4281, 80.0037], // Aluthgama
-      [6.3500, 80.0500],
-      [6.2500, 80.1000],
-      [6.1500, 80.1500],
-      [6.0535, 80.2210], // Galle
-      [6.0200, 80.3000],
-      [5.9800, 80.4000],
-      [5.9600, 80.5000],
-      [5.9549, 80.5550]  // Matara
+      [6.8730, 79.9390], // Makumbara (Colombo)
+      [6.5844, 79.9604], // Kalutara
+      [6.4320, 79.9984], // Aluthgama
+      [6.0329, 80.2158], // Galle
+      [5.9431, 80.5490]  // Matara
     ]
   }
 ];
 
 export const cities = [
-  { name: "Colombo", lat: 6.9271, lng: 79.8612 },
-  { name: "Fort", lat: 6.9373, lng: 79.8471 },
-  { name: "Pettah", lat: 6.9340, lng: 79.8502 },
-  { name: "Kadawatha", lat: 7.0167, lng: 79.9500 },
-  { name: "Town Hall", lat: 6.9147, lng: 79.8656 },
-  { name: "Kandy", lat: 7.2931, lng: 80.6343 },
-  { name: "Galle", lat: 6.0535, lng: 80.2210 },
-  { name: "Matara", lat: 5.9549, lng: 80.5550 },
-  { name: "Negombo", lat: 7.2083, lng: 79.8358 },
-  { name: "Kalutara", lat: 6.5854, lng: 79.9607 },
-  { name: "Ratnapura", lat: 6.6828, lng: 80.4003 },
-  { name: "Anuradhapura", lat: 8.3114, lng: 80.4037 },
-  { name: "Jaffna", lat: 9.6615, lng: 80.0255 },
-  { name: "Batticaloa", lat: 7.7102, lng: 81.7088 },
-  { name: "Trincomalee", lat: 8.5874, lng: 81.2152 }
+  { name: "Colombo Fort", lat: 6.9373, lng: 79.8471 },
+  { name: "Colombo Pettah", lat: 6.9340, lng: 79.8502 },
+  { name: "Makumbara", lat: 6.8730, lng: 79.9390 }, 
+  { name: "Kadawatha", lat: 7.0052, lng: 79.9546 },
+  { name: "Colombo Town Hall", lat: 6.9147, lng: 79.8656 },
+  { name: "Aluthgama", lat: 6.4320, lng: 79.9984 }, 
+  { name: "Kandy", lat: 7.2898, lng: 80.6311 },
+  { name: "Galle", lat: 6.0329, lng: 80.2158 },
+  { name: "Matara", lat: 5.9431, lng: 80.5490 },
+  { name: "Negombo", lat: 7.2053, lng: 79.8412 },
+  { name: "Kalutara", lat: 6.5844, lng: 79.9604 },
+  { name: "Ratnapura", lat: 6.6834, lng: 80.4021 },
+  { name: "Anuradhapura", lat: 8.3231, lng: 80.4028 },
+  { name: "Jaffna", lat: 9.6668, lng: 80.0120 },
+  { name: "Batticaloa", lat: 7.7146, lng: 81.6947 },
+  { name: "Trincomalee", lat: 8.5767, lng: 81.2351 }, 
+  { name: "Kalutara", lat: 6.5844, lng: 79.9604 },
+  { name: "Homagama", lat: 6.8420, lng: 80.0033 },
+  { name: "Kaduwela", lat: 6.9363, lng: 79.9833 },
+  { name: "Maharagama", lat: 6.8482, lng: 79.9254 },
+  { name: "Nugegoda", lat: 6.8717, lng: 79.8898 }, 
+  { name: "Kottawa", lat: 6.8408, lng: 79.9639 },
+  { name: "Pannipitiya", lat: 6.8454, lng: 79.9434 },
+  { name: "Kirulapone", lat: 6.8786, lng: 79.8755 },
+  { name: "Battaramulla", lat: 6.9020, lng: 79.9174 },
+  { name: "Rajagiriya", lat: 6.9101, lng: 79.8944 },
+  { name: "Borella", lat: 6.9150, lng: 79.8780 },
+  { name: "Peliyagoda", lat: 6.9355, lng: 79.8848 },
+  { name: "Neludeniya", lat: 7.2349, lng: 80.2632 },
+  { name: "Kegalle", lat: 7.2533, lng: 80.3448 },
+  { name: "Ibbanwala Junction", lat: 6.9181, lng: 79.8625 },
+  { name: "Thummulla", lat: 6.8957, lng: 79.8605 },
+  { name: "Thimbirigasyaya Junction", lat: 6.9211, lng: 79.8698 },
+  { name: "Havelock City", lat: 6.8829, lng: 79.8688 },
+  { name: "Delkanda", lat: 6.8600, lng: 79.9000 },
+  { name: "Navinna", lat: 6.8525, lng: 79.9169 },
+  { name: "Lake House", lat: 6.9323, lng: 79.8473 },
+  { name: "Slave Island", lat: 6.9257, lng: 79.8503 }
 ];
 
 // Function to find routes between two cities
